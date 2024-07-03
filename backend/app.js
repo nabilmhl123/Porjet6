@@ -10,6 +10,8 @@ const Thing = require('./models/Thing');
 
 const stuffRoutes = require('./routes/stuff');
 
+const userRoutes = require('./routes/user');
+
 mongoose.connect('mongodb+srv://billythekid:nabilcanal91@cluster0.osfotbp.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0',
     { useNewUrlParser: true,
       useUnifiedTopology: true })
@@ -23,6 +25,7 @@ app.use((req, res, next) => {
     next();
   });
 
-  app.use('/api/stuff', stuffRoutes);
+app.use('/api/stuff', stuffRoutes);
+app.use('/api/auth', userRoutes);
 
 module.exports = app;
