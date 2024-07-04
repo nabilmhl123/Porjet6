@@ -12,6 +12,8 @@ const stuffRoutes = require('./routes/stuff');
 
 const userRoutes = require('./routes/user');
 
+const path = require('path');
+
 mongoose.connect('mongodb+srv://billythekid:nabilcanal91@cluster0.osfotbp.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0',
     { useNewUrlParser: true,
       useUnifiedTopology: true })
@@ -27,5 +29,6 @@ app.use((req, res, next) => {
 
 app.use('/api/stuff', stuffRoutes);
 app.use('/api/auth', userRoutes);
+app.use('/images', express.static(path.join(__dirname, 'images')));
 
 module.exports = app;
